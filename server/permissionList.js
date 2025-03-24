@@ -1,0 +1,18 @@
+export const permissionList = [
+  { routeName: "products", role: ["admin"], method: "POST" },
+  { routeName: "products", role: ["admin"], method: "PUT" },
+  { routeName: "products", role: ["admin"], method: "DELETE" },
+  { routeName: "category", role: ["admin"], method: "POST" },
+  { routeName: "category", role: ["admin"], method: "PUT" },
+  { routeName: "category", role: ["admin"], method: "DELETE" },
+  { routeName: "topping", role: ["admin"], method: "POST" },
+  { routeName: "topping", role: ["admin"], method: "PUT" },
+  { routeName: "topping", role: ["admin"], method: "DELETE" },
+  { routeName: "category-topping", role: ["admin"], method: "POST" },
+  { routeName: "category-topping", role: ["admin"], method: "PUT" },
+  { routeName: "category-topping", role: ["admin"], method: "DELETE" },
+  { routeName: "cart", role: ["user","admin"], method: "GET" },
+  { routeName: "cart", role: ["user","admin"], method: "POST" },
+  { routeName: "cart", role: ["user","admin"], method: "PUT" },
+  { routeName: "cart", role: ["user","admin"], method: "DELETE" },
+];

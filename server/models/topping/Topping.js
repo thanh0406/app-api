@@ -1,10 +1,13 @@
 import mongoose from "mongoose";
 
 const toppingSchema = new mongoose.Schema({
-  name: { type: String, required: true }, 
-  price: { type: Number, required: true },
-  img: { type: String, required: true },
-  codeToppingId: { type: String, required: true }
+  nameTopping: { type: String, required: true }, 
+  priceTopping: { type: Number, required: true },
+  categoryToppingId: {  
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "CategoryTopping",
+    required: true
+  }
 },
 { collection: "topping",  timestamps: true });
 

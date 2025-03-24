@@ -1,0 +1,7 @@
+// Test get
+GET http://localhost:8000/products
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZGFjMzkzNmI3ZmRiNWMzNDEzMTMyZCIsInVzZXJuYW1lIjoidnl0aGFuaCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQyMzkxNjY3LCJleHAiOjE3NDI0NzgwNjd9.KpSUbfAsbTt1_ZQEpbfHGE78zHHQYM8tIF9ujQ7FaLo
+Content-Type: application/json
+
+// Test post
+POST  http://localhost:8000/testaaa

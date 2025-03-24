@@ -13,7 +13,7 @@ function HeaderUser() {
 
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/category");
+                const response = await axios.get("http://localhost:8000/category");
                 if (isMounted) setCategories(response.data);
             } catch (error) {
                 console.error("Lỗi khi lấy dữ liệu:", error);
@@ -29,7 +29,10 @@ function HeaderUser() {
 
     const handleCategoryClick = (categoryId) => {
         navigate(`/user/category-dropdown-user/${categoryId}`);
+        console.log("handleCategoryClick",handleCategoryClick)
+        console.log("categoryId",categoryId)
     };
+   
 
     return (
         <div>
@@ -50,12 +53,12 @@ function HeaderUser() {
                         </form>
 
                         <div className="d-flex">
-                            <button className="btn btn-light me-3">
-                                <img src="/photo/2.png" alt="Tin nhắn" width="40" height="40" />
-                            </button>
-                            <button className="btn btn-light me-3">
-                                <img src="/photo/3.jpg" alt="Giỏ hàng" width="40" height="40" />
-                            </button>
+                            <Link className="btn btn-primary ms-3 d-flex align-items-center" to="/">
+                                mail
+                            </Link>
+                            <Link className="btn btn-primary ms-3 d-flex align-items-center" to="/user/cart-user">
+                           giỏ hàng
+                            </Link>
                         </div>
 
                         {userInfo?.isAuthenticated ? (

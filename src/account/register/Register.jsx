@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../context/AuthContext";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Register() {
     const navigate = useNavigate();
+    const { setEmail } = useAuth();
     const [user, setUser] = useState({
         username: "",
         email: "",
         password: "",
+        confirmPassword: "", // Thêm trường confirmPassword
         role: "user",
     });
     const [error, setError] = useState("");
@@ -22,10 +26,19 @@ function Register() {
         setError("");
         setSuccess("");
 
+        // Kiểm tra xem mật khẩu có khớp không
+        if (user.password !== user.confirmPassword) {
+            setError("Mật khẩu xác nhận không khớp.");
+            return;
+        }
+
         try {
-            const response = await axios.post("http://localhost:5000/api/register", user);
+            const response = await axios.post(`${API_URL}/api/register`, user);
             if (response.status === 200) {
                 setSuccess("Đăng ký thành công!");
+                await setTimeout(() => {}, 3000);
+                setEmail(user.email);
+                navigate("/verify-code");
             }
         } catch (error) {
             setError(error.response?.data?.message || "Lỗi server, vui lòng thử lại!");
@@ -71,6 +84,17 @@ function Register() {
                         required 
                     />
                 </div>
+                <div className="mb-3">
+                    <label className="form-label">Xác nhận mật khẩu</label>
+                    <input 
+                        type="password" 
+                        className="form-control" 
+                        name="confirmPassword" 
+                        value={user.confirmPassword} 
+                        onChange={handleChange} 
+                        required 
+                    />
+                </div>
                 <button type="submit" className="btn btn-success">Đăng ký</button>
                 {" "}
                 <button 
@@ -84,4 +108,5 @@ function Register() {
         </div>
     );
 }
+
 export default Register;
